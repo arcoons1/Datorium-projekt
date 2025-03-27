@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tavs mūzikas analizātors</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spotify Logo" class="logo">
+            <h1>Tavs Chill Guy mūzikas wrapiņš</h1>
+            <p>Noskaidro, cik Chill tu esi :D</p>
+        </header>
+        
+        <main>
+            <form action="{{ url_for('analyze') }}" method="post">
+                <button type="submit" class="analyze-btn">Sagatavot manu wrapiņu</button>
+            </form>
+        </main>
+        
+        <footer>
+            <p>&copy; {{ current_year }} Arcoons analyzer inc.</p>
+        </footer>
+    </div>
+</body>
+</html>

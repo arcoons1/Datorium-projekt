@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Music Wrapped Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container results">
+        <header>
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Spotify Logo" class="logo">
+            <h1> Tavs {{ current_year }}.gada Chill Guy dziesmu wrapiņš ;)</h1>
+        </header>
+        
+        <div class="stats-summary">
+            <div class="stat-card">
+                <h2>{{ total_plays|format_number }}</h2>
+                <p>Kopējais atskaņojumu skaits</p>
+            </div>
+            <div class="stat-card">
+                <h2>{{ total_songs }}</h2>
+                <p>Noklausītās dziesmas</p>
+            </div>
+            <div class="stat-card">
+                <h2>{{ top_artist }}</h2>
+                <p>Mīļākais artists</p>
+            </div>
+        </div>
+        
+        <div class="visualization">
+            <h2>Tava visvairāk atskaņotā dziesma</h2>
+            <div class="top-song">
+                <h3>{{ top_song.song_name }}</h3>
+                <p>by {{ top_song.artist }}</p>
+                <p>Played {{ top_song.play_count|format_number }} times</p>
+            </div>
+        </div>
+        
+        <div class="visualization">
+            <h2>Tavs TOP 10</h2>
+            <img src="data:image/png;base64,{{ visuals.top_songs }}" alt="Top 10 Songs">
+        </div>
+        
+        <div class="visualization">
+            <h2>Tavi TOP artisti</h2>
+            <img src="data:image/png;base64,{{ visuals.top_artists }}" alt="Top Artists">
+        </div>
+        
+        <div class="visualization">
+            <h2>Tavs žanra izkārtojums</h2>
+            <img src="data:image/png;base64,{{ visuals.genres }}" alt="Genre Distribution">
+        </div>
+        
+        <div class="visualization">
+            <h2>Tavs atskaņojumu izkārtojums</h2>
+            <img src="data:image/png;base64,{{ visuals.play_dist }}" alt="Play Distribution">
+        </div>
+        
+        <footer>
+            <p>&copy; {{ current_year }} Arcoons analyzer inc.</p>
+        </footer>
+    </div>
+</body>
+</html>
